@@ -35,13 +35,13 @@ export const register = async(req: Request , res: Response): Promise<void> => {
     } catch (error: any) {
 
         // Todo mejorar los errores
-        // if(!email) {
-        //     res.status(400).json({ error: 'Please provide email' });
-        // }
+        if(!email) {
+            res.status(400).json({ error: 'Please provide email' });
+        }
         
-        // if (!password) {
-        //     res.status(400).json({ error: 'Please provide password' });
-        // }
+        if (!password) {
+            res.status(400).json({ error: 'Please provide password' });
+        }
         
         if(error?.code === 'P2002' && error?.meta?.target?.includes('email')) {
             res.status(400).json({ error: 'Email already exists' });
